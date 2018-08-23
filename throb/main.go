@@ -8,6 +8,8 @@ import (
 	_ "happy.work/throb/routers"
 )
 
+var UserId string
+
 func main() {
 	slogan()
 	config()
@@ -26,9 +28,6 @@ func config() {
 	beego.BConfig.Listen.HTTPPort, _ = beego.AppConfig.Int("app.http_port")
 	beego.BConfig.Listen.EnableAdmin = false
 
-
-	//beego.SetStaticPath("/static", "views/static")
-	//beego.SetStaticPath("/attachments", "attachments")
 }
 
 // 设置错误控制器

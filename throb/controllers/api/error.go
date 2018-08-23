@@ -9,8 +9,12 @@ func (c *ErrorController) Error404() {
 	c.ServeJSON()
 }
 
-
 func (c *ErrorController) Error401() {
-	c.Data["json"] = ResponseWrapper{Code: 401, Message: "身份认证过期或未登录"}
+	c.Data["json"] = ResponseWrapper{Code: 401, Message: "身份认证失败"}
+	c.ServeJSON()
+}
+
+func (c *ErrorController) Error412() {
+	c.Data["json"] = ResponseWrapper{Code: 412, Message: "缺少必须的头信息"}
 	c.ServeJSON()
 }

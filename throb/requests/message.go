@@ -10,7 +10,6 @@ type GetMessageListReq struct {
 type CreateMessageReq struct {
 	Index       string `json:"index" valid:"Required"`
 	Type        int64  `json:"type" valid:"Required"`
-	Uid         int64  `json:"uid" valid:"Required"`
 	Body        string `json:"body" valid:"Required"`
 	Persistence bool   `json:"persistence" valid:"Required"`
 }

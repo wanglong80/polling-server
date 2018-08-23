@@ -2,6 +2,7 @@ package api
 
 import (
 	"happy.work/throb/db"
+	"happy.work/throb/global"
 	"happy.work/throb/requests"
 	"happy.work/throb/service"
 )
@@ -39,8 +40,8 @@ func (c *MessageController) CreateMessage() {
 	message := &db.Message{}
 	message.Index = req.Index
 	message.Type = req.Type
-	message.Uid = req.Uid
 	message.Body = req.Body
+	message.Uid = global.UserId
 
 	id := service.CreateMessage(message, req.Persistence)
 

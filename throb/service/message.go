@@ -14,7 +14,7 @@ import (
 type SimpleMessageItem struct {
 	Id        int64  `json:"i"`
 	Type      int64  `json:"t"`
-	Uid       int64  `json:"u"`
+	Uid       string `json:"u"`
 	Body      string `json:"b"`
 	CreatedAt int64  `json:"c"`
 }

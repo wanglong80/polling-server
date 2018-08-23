@@ -58,7 +58,7 @@ func CreateStorage(name string, m map[string]interface{}) map[string]interface{}
 	}
 
 	// 与已经存在的数据合并
-	for k ,v := range m {
+	for k, v := range m {
 		m2[k] = v
 	}
 
