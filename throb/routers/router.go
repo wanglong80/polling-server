@@ -69,6 +69,10 @@ func init() {
 					ctx.Abort(401, "Unauthorized")
 				}
 
+				if err != nil || !token.Valid {
+					ctx.Abort(401, "TokenInvalid")
+				}
+
 				claims := token.Claims.(jwt.MapClaims)
 
 				// JWT Token 中缺少 sub
@@ -84,9 +88,7 @@ func init() {
 			}
 		}
 
-		if err != nil || !token.Valid {
-			ctx.Abort(401, "TokenInvalid")
-		}
+
 
 		global.UserId = userId
 	})
