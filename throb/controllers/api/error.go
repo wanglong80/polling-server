@@ -9,12 +9,17 @@ func (c *ErrorController) Error404() {
 	c.ServeJSON()
 }
 
-func (c *ErrorController) Error401() {
-	c.Data["json"] = ResponseWrapper{Code: 401, Message: "身份认证失败"}
+func (c *ErrorController) ErrorUnauthorized() {
+	c.Data["json"] = ResponseWrapper{Code: 1001, Message: "身份认证失败"}
 	c.ServeJSON()
 }
 
-func (c *ErrorController) Error412() {
-	c.Data["json"] = ResponseWrapper{Code: 412, Message: "缺少必须的头信息"}
+func (c *ErrorController) ErrorTokenInvalid() {
+	c.Data["json"] = ResponseWrapper{Code: 1002, Message: "无效的授权令牌或已过期"}
+	c.ServeJSON()
+}
+
+func (c *ErrorController) ErrorHeaderMissing() {
+	c.Data["json"] = ResponseWrapper{Code: 1003, Message: "缺少必须的头信息"}
 	c.ServeJSON()
 }

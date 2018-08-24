@@ -63,5 +63,4 @@ func (c *HeartbeatController) Index() {
 
 	c.Data["json"] = ResponseWrapper{Code: 0, Message: "OK", Data: resp}
 	c.ServeJSON()
-
 }

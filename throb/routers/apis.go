@@ -9,11 +9,11 @@ func init() {
 	ns :=
 		beego.NewNamespace("/api",
 			// 心跳包
-			NSRoute("/heartbeat", &api.HeartbeatController{}, "post:Index", auth),
+			NSRoute("/heartbeat", &api.HeartbeatController{}, "post:Index"),
 
 			// 消息
 			NSRoute("/message/list", &api.MessageController{}, "post:GetMessageList"),
-			NSRoute("/message/create", &api.MessageController{}, "post:CreateMessage", auth),
+			NSRoute("/message/create", &api.MessageController{}, "post:CreateMessage"),
 			NSRoute("/message/delete", &api.MessageController{}, "post:DeleteMessage"),
 			NSRoute("/index/delete", &api.MessageController{}, "post:DeleteIndex"),
 
