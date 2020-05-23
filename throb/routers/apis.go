@@ -18,8 +18,8 @@ func init() {
 			NSRoute("/index/delete", &api.MessageController{}, "post:DeleteIndex"),
 
 			// 存储
-			NSRoute("/storage/get", &api.StorageController{}, "get:GetStorage"),
-			NSRoute("/storage/create", &api.StorageController{}, "post:CreateStorage"),
+			//NSRoute("/storage/get", &api.StorageController{}, "get:GetStorage"),
+			//NSRoute("/storage/create", &api.StorageController{}, "post:CreateStorage"),
 		)
 
 	beego.AddNamespace(ns)

@@ -26,7 +26,7 @@ func (c *HeartbeatController) Index() {
 
 	// 获取消息数据
 	for _, e := range req.Ms {
-		// gtId参数等于 -1 代表仅取最新的一条消息
+		// 代表仅取最新的一条消息
 		if e.Last {
 			ms[e.Name] = service.MessageLastCache(e.Name)
 		} else {

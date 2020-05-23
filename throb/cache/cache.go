@@ -30,7 +30,6 @@ func init() {
 
 // 连接 redis
 func Conn() redis.Conn {
-
 	r := RedisClient.Get()
 	return r
 }
