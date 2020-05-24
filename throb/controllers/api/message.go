@@ -1,7 +1,6 @@
 package api
 
 import (
-	"happy.work/throb/db"
 	"happy.work/throb/global"
 	"happy.work/throb/requests"
 	"happy.work/throb/service"
@@ -9,22 +8,6 @@ import (
 
 type MessageController struct {
 	BaseController
-}
-
-// 历史消息列表
-func (c *MessageController) GetMessageList() {
-	req := &requests.GetMessageListReq{}
-	message, err := c.RequestData(req)
-
-	if err != nil {
-		c.Response(0, message, nil)
-		return
-	}
-
-	data := service.GetMessageList(req)
-
-	c.Data["json"] = ResponseWrapper{Code: 0, Message: "OK", Data: data}
-	c.ServeJSON()
 }
 
 // 创建消息
@@ -37,13 +20,12 @@ func (c *MessageController) CreateMessage() {
 		return
 	}
 
-	message := &db.Message{}
+	message := &requests.CreateMessageReq{}
 	message.Index = req.Index
-	message.Type = req.Type
 	message.Body = req.Body
 	message.Uid = global.UserId
 
-	id := service.CreateMessage(message, req.Persistence)
+	id := service.CreateMessage(message)
 
 	c.Data["json"] = ResponseWrapper{Code: 0, Message: "OK", Data: id}
 	c.ServeJSON()

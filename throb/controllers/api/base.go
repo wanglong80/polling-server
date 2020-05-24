@@ -2,9 +2,7 @@ package api
 
 import (
 	"encoding/json"
-	"errors"
 	"github.com/astaxie/beego"
-	"github.com/astaxie/beego/validation"
 )
 
 type BaseController struct {
@@ -22,17 +20,17 @@ type ResponseWrapper struct {
 func (c *BaseController) RequestData(req interface{}) (string, error) {
 	json.Unmarshal(c.Ctx.Input.RequestBody, &req)
 
-	valid := validation.Validation{}
-	ok, _ := valid.Valid(req)
+	//valid := validation.Validation{}
+	//ok, _ := valid.Valid(req)
 
-	if !ok {
-		beego.Debug(valid)
-		message := valid.Errors[0].Key + " " + valid.Errors[0].Message
-		c.Data["json"] = ResponseWrapper{Code: 1, Message: message, Data: ok}
-		c.ServeJSON()
-
-		return message, errors.New("InvalidParameter")
-	}
+	//if !ok {
+	//	beego.Debug(valid)
+	//	message := "err"
+	//	c.Data["json"] = ResponseWrapper{Code: 1, Message: message, Data: ok}
+	//	c.ServeJSON()
+	//
+	//	return message, errors.New("InvalidParameter")
+	//}
 
 	return "ok", nil
 }
